@@ -48,6 +48,10 @@ typedef enum disassembler_mode_s {
 	mode_64,
 } disassembler_mode_t;
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 uint16_t libxdc_get_release_version(void);
 
 void libxdc_reset_trace_cache(libxdc_t* self);
@@ -66,3 +70,7 @@ void libxdc_register_edge_callback(libxdc_t* self,  void (*edge_callback)(void*,
 
 void libxdc_enable_tracing(libxdc_t* self);
 void libxdc_disable_tracing(libxdc_t* self);
+
+#ifdef __cplusplus
+}
+#endif
