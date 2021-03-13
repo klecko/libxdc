@@ -17,7 +17,7 @@ $(ODIR)/%.o: $(SDIR)/%.c $(SDIR)/*.h libxdc.h
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 dynlib: $(OBJ)
-	$(CC) $^ -o build/libxdc.so -shared $(CFLAGS) $(LDFLAGS) -l:libcapstone.so.4 
+	$(CC) $^ -o build/libxdc.so -shared $(CFLAGS) $(LDFLAGS) -l:libcapstone.so.5
 
 staticlib: $(OBJ)
 	ar rcs build/libxdc.a $^
@@ -26,7 +26,7 @@ tester_dyn: dynlib test/*.c test/*.h
 	$(CC) test/tester.c test/page_cache.c test/helper.c -o build/tester -Itest/ -I./ -Lbuild/ -lxdc $(CFLAGS) $(LDFLGAS)
 
 tester_static: staticlib test/*.c test/*.h
-	$(CC) test/tester.c test/page_cache.c test/helper.c -o build/tester_static -Itest/ -I./ -Lbuild/ -l:libxdc.a -l:libcapstone.so.4 $(CFLAGS) $(LDFLAGS)
+	$(CC) test/tester.c test/page_cache.c test/helper.c -o build/tester_static -Itest/ -I./ -Lbuild/ -l:libxdc.a -l:libcapstone.so.5 $(CFLAGS) $(LDFLAGS)
 
 install: dynlib
 	cp libxdc.h /usr/include/
