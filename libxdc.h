@@ -28,6 +28,10 @@ SOFTWARE.
 #include <stdbool.h>
 #include <stdlib.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #define LIBXDC_RELEASE_VERSION 1
 
 #define PT_TRACE_END			__extension__ 0b01010101
@@ -67,3 +71,7 @@ void libxdc_register_ip_callback(libxdc_t* self,  void (*ip_callback)(void*, uin
 
 void libxdc_enable_tracing(libxdc_t* self);
 void libxdc_disable_tracing(libxdc_t* self);
+
+#ifdef __cplusplus
+}
+#endif
